@@ -1,0 +1,10 @@
+{
+  "name": "automait-time",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "suncalc": "^1.7.0",
+    "sunwatcher": "^1.0.1"
+  }
+}
