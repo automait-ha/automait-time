@@ -15,7 +15,7 @@ function Time(automait, logger, config) {
   this.config = config
   determineSunTimesForLocations.call(this, config)
   // run this one a day (TODO: Really needs to be start of day)
-  setInterval(determineSunTimesForLocations.bind(this, config), 86400000)
+  setInterval(determineSunTimesForLocations.bind(this, config), 3600000)
 }
 
 Time.prototype = Object.create(Emitter.prototype)
@@ -27,13 +27,13 @@ Time.prototype.init = function () {
 Time.prototype.isAfterSunset = function (locationName, callback) {
   if (!this.sunTimes[locationName]) return callback(new Error('Unknown location'))
   var now = new Date()
-  callback(null, now > this.sunTimes[locationName].sunrise)
+  callback(null, now > this.sunTimes[locationName].sunsetStart)
 }
 
 Time.prototype.isAfterSunrise = function (locationName, callback) {
   if (!this.sunTimes[locationName]) return callback(new Error('Unknown location'))
   var now = new Date()
-  callback(null, now > this.sunTimes[locationName].sunsetStart)
+  callback(null, now > this.sunTimes[locationName].sunrise)
 }
 
 function determineSunTimesForLocations(config) {
