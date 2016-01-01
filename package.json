@@ -5,6 +5,6 @@
   "license": "ISC",
   "dependencies": {
     "suncalc": "^1.7.0",
-    "sunwatcher": "git://git@github.com:microadam/node-sunwatcher.git"
+    "sunwatcher": "microadam/node-sunwatcher"
   }
 }
