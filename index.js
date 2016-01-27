@@ -36,6 +36,12 @@ Time.prototype.isAfterSunrise = function (locationName, callback) {
   callback(null, now > this.sunTimes[locationName].sunrise)
 }
 
+Time.prototype.isBeforeSunrise = function (locationName, callback) {
+  if (!this.sunTimes[locationName]) return callback(new Error('Unknown location'))
+  var now = new Date()
+  callback(null, now < this.sunTimes[locationName].sunriseEnd)
+}
+
 function determineSunTimesForLocations(config) {
   // THIS NEEDS TO BE RE-RUN EVERYDAY (AT THE START OF THE DAY)
   var sunTimes = {}
