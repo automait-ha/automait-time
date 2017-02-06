@@ -64,6 +64,10 @@ function setupSunEvents(config) {
       this.emit('sunset:location:' + location.name)
     }.bind(this))
 
+    sunwatcher.on('nauticalDusk', function() {
+      this.emit('nauticalDusk:location:' + location.name)
+    }.bind(this))
+
     sunwatcher.startSunWatch()
 
   }.bind(this))
